@@ -1604,11 +1604,22 @@ def _construct_pool_object(
             )
         else:
             pec = None
+
+        if util.is_not_empty(pool_settings.public_ip_address_configuration):
+            piac = batchmodels.PublicIPAddressConfiguration(
+                provision=pool_settings.public_ip_address_configuration['provision'] if ('provision' in
+                            pool_settings.public_ip_address_configuration) else None,
+                ip_address_ids=pool_settings.public_ip_address_configuration['ip_address_ids'] if ('ip_address_ids' in
+                            pool_settings.public_ip_address_configuration) else None,
+            )
+        else:
+            piac = None
         # add subnet, NAT rules, and public IPs
         pool.network_configuration = batchmodels.NetworkConfiguration(
             subnet_id=subnet_id,
             endpoint_configuration=pec,
             public_ips=pool_settings.public_ips,
+            public_ip_address_configuration=piac,
         )
     # storage env vars
     if not native or delay_image_preload:

@@ -46,7 +46,8 @@ mount_blob_container() {
     local bftmp="${1}/blobfuse-tmp/${2}-${container}"
     local hmp="${MOUNT_DIR}/azblob-${2}-${container}"
     export AZURE_STORAGE_ACCOUNT="$2"
-    export AZURE_STORAGE_SAS_TOKEN="$4"
+    export AZURE_STORAGE_BLOB_ENDPOINT=st0dd2tra27h7xqwfastq.blob.core.usgovcloudapi.net
+export AZURE_STORAGE_SAS_TOKEN="$4"
     shift 4
     echo "Mounting blob container $container (sa=$AZURE_STORAGE_ACCOUNT) with options: $*"
     # shellcheck disable=SC2068

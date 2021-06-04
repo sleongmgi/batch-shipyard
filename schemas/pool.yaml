@@ -302,6 +302,16 @@ mapping:
         type: seq
         sequence:
           - type: str
+      public_ip_address_configuration:
+        type: map
+        mapping:
+          provision:
+            type: str
+            enum: ['batchManaged', 'userManaged', 'noPublicIPAddresses']
+          ip_address_ids:
+            type: seq
+            sequence:
+              - type: str
       certificates:
         type: map
         mapping:

@@ -231,6 +231,7 @@ PoolSettings = collections.namedtuple(
         'certificates', 'prometheus', 'upload_diagnostics_logs_on_unusable',
         'container_runtimes_install', 'container_runtimes_default',
         'per_job_auto_scratch', 'batch_insights_enabled', 'public_ips',
+        'public_ip_address_configuration',
         'gpu_ignore_warnings',
     ]
 )
@@ -1498,6 +1499,7 @@ def pool_settings(config):
         batch_insights_enabled=_kv_read(
             conf, 'batch_insights_enabled', default=False),
         public_ips=_kv_read_checked(conf, 'public_ips'),
+        public_ip_address_configuration=_kv_read_checked(conf, 'public_ip_address_configuration'),
     )
 
 
